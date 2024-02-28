@@ -71,9 +71,9 @@ public class ToDoListService {
             String apiUrl;
 
      public ResponseEntity<?> getrandomfact() {
-        log.debug("forward request to " + apiUrl + "/?lang=ger");
+        log.debug("forward request to " + apiUrl);
         RestTemplate restTemplate = new RestTemplate();
-        String url = apiUrl+ "/?lang=ger";
+        String url = apiUrl;
 
         HttpHeaders headers = new HttpHeaders();
 
