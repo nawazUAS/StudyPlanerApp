@@ -1,0 +1,52 @@
+<div class="container rounded shadow bg-light p-4 mt-5">
+    <div class="row">
+      <div class="col-12 h3 text-center text-danger">
+        Deine Transaktionen:
+      </div>
+      <div class="col-12">
+        Gesamtkosten: {{ totalcosts }}
+        <button class="btn btn-danger ms-3" (click)="getTotalCosts()">Kosten berechnen</button>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <form>
+          <label for="name" class="form-label">Transaktion:</label> <!--mb is for mobile-->>
+          <input [(ngModel)]="description" name="description" class="form-control mb-2" placeholder="Beschreibung">
+          <input [(ngModel)]="amount" name="amount" class="form-control mb-2" placeholder="Betrag">
+          <input [(ngModel)]="type" name="type" class="form-control mb-2" placeholder="Typ">
+          <input [(ngModel)]="category" name="category" class="form-control mb-2" placeholder="Kategorie">
+          <button class="btn btn-danger w-100" (click)="createFinance()" [disabled]="!description">Transaktion erstellen</button>
+        </form>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="table-danger">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Beschreibung</th>
+                <th scope="col">Betrag</th>
+                <th scope="col">Datum</th>
+                <th scope="col">Typ</th>
+                <th scope="col">Kategorie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let finance of finances" [ngClass]="{'table-success': finance === selectedFinance}">
+                <th scope="row">{{finance.id}}</th>
+                <td>{{finance.description}}</td>
+                <td>{{finance.amount}}</td>
+                <td>{{finance.date}}</td>
+                <td>{{finance.type}}</td>
+                <td>{{finance.category}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

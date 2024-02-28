@@ -1,0 +1,57 @@
+<div class="container rounded shadow bg-light p-4 mt-5">
+  <div class="row">
+    <div class="col-12 h3 text-center text-primary">
+      Deine Termine:
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <form>
+        <label for="name" class="form-label">Termin:</label>
+        <input [(ngModel)]="title" name="title" class="form-control mb-2" placeholder="Titel">
+    
+        <input [(ngModel)]="day" name="day" class="form-control mb-2" placeholder="Tag">
+        <input [(ngModel)]="month" name="month" class="form-control mb-2" placeholder="Monat">
+        <input [(ngModel)]="year" name="year" class="form-control mb-2" placeholder="Jahr">
+        <input [(ngModel)]="hours" name="hours" class="form-control mb-2" placeholder="Stunden">
+        <input [(ngModel)]="minutes" name="minutes" class="form-control mb-2" placeholder="Minuten">
+    
+        <button class="btn btn-primary w-100" (click)="createEvent()" [disabled]="!title">Termin erstellen</button>
+    </form>    
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-primary">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Titel</th>
+              <th scope="col">Tag</th>
+              <th scope="col">Uhrzeit</th>
+              <th scope="col">Status</th>
+              <th scope="col">Verbleibende Zeit</th>
+              <th scope="col">Verbleibende Stunden</th>
+              <th scope="col">Aktionen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let event of events" [ngClass]="{'table-success': event === selectedEvent}">
+              <th scope="row">{{event.id}}</th>
+              <td>{{event.title}}</td>
+              <td>{{event.date}}</td>
+              <td>{{event.time}}</td>
+              <td>{{event.state}}</td>
+              <td>{{event.timeLeft}}</td>
+              <td>{{event.hoursLeft}}</td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="deleteEvent(event.id)">Löschen</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

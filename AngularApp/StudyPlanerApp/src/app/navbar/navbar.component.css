@@ -1,0 +1,31 @@
+/* navbar.component.css */
+
+.navigation-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f5f2f2;
+    border-radius: 15px; 
+    padding: 11px; 
+}
+
+.navigation-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 3px;
+    margin: 5px;
+    transition: background-color 0.5s ease;
+}
+
+.navigation-links a:hover {
+    background-color: #ddd;
+}
+
+@media screen and (max-width: 600px) {
+    .navigation-links {
+        justify-content: center;
+    }
+}

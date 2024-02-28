@@ -1,0 +1,49 @@
+<div class="container rounded shadow bg-light p-4 mt-5">
+    <div class="row">
+      <div class="col-12 h3 text-center text-success">
+        Deine Todos:
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <form>
+          <label for="name" class="form-label">Todo:</label>
+          <input [(ngModel)]="title" name="title" class="form-control mb-2" placeholder="Titel">
+          <input [(ngModel)]="description" name="description" class="form-control mb-2" placeholder="Beschreibung">
+          <button class="btn btn-success w-100" (click)="createTodo()" [disabled]="!title">Todo erstellen</button>
+        </form>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="table-success">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titel</th>
+                <th scope="col">Beschreibung</th>
+                <th scope="col">Erstellt am</th>
+                <th scope="col">Abgeschlossen</th>
+                <th scope="col">Aktionen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let todo of todos" [ngClass]="{'table-success': todo === selectedTodo}">
+                <th scope="row">{{todo.id}}</th>
+                <td>{{todo.title}}</td>
+                <td>{{todo.description}}</td>
+                <td>{{todo.timeStemp}}</td>
+                <td>{{todo.completed}}</td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.id)">Löschen</button>
+                  <button class="btn btn-primary btn-sm ms-2" (click)="updateTodo(todo.id)">Erledigt</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
